@@ -1,3 +1,4 @@
+package Model;
 
 import java.io.*;
 import java.util.*;
@@ -5,7 +6,7 @@ import java.util.*;
 /**
  * 
  */
-public interface userDAO {
+public interface UserDAO {
 
 
     /**

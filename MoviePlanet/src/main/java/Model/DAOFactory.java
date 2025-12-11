@@ -1,4 +1,6 @@
 
+package Model;
+
 import java.io.*;
 import java.util.*;
 
@@ -7,16 +9,16 @@ import java.util.*;
  */
 public abstract class DAOFactory {
 
-    /**
-     * Default constructor
-     */
-    public DAOFactory() {
+    private static DAOFactory instance = null;
+
+    public static DAOFactory getInstance() {
+        if (instance == null) {
+            instance = new PostgresFactory();
+        }
+        return instance;
     }
 
-    /**
-     * 
-     */
-    private void IsAbstract;
+    public abstract UserDAO createUserDAO();
 
 
 

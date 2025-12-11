@@ -1,3 +1,4 @@
+package Model;
 
 import java.io.*;
 import java.util.*;
@@ -8,17 +9,11 @@ import java.util.*;
 public class PostgresFactory extends DAOFactory {
 
     /**
-     * Default constructor
-     */
-    public PostgresFactory() {
-    }
-
-    /**
      * @return
      */
+    @Override
     public UserDAO createUserDAO() {
-        // TODO implement here
-        return null;
+        return new UserDAOPostgres();
     }
 
 }

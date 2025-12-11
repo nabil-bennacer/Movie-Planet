@@ -5,12 +5,12 @@ import java.util.*;
 /**
  * 
  */
-public class sessionFacade {
+public class SessionFacade {
 
     /**
      * Default constructor
      */
-    public sessionFacade() {
+    public SessionFacade() {
     }
 
     /**
