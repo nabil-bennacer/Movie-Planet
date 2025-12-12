@@ -5,13 +5,15 @@ services:
     image: postgres:15
     container_name: movieplanet_db
     ports:
-      - "5432:5432" # Mappe le port du conteneur sur ton PC
+      - "5432:5432"
     environment:
-      - POSTGRES_USER=movieplanet     # Correspond à ton code Java
-      - POSTGRES_PASSWORD=MoviePlanet # Correspond à ton code Java
-      - POSTGRES_DB=movieplanet       # Correspond à ton code Java
+      - POSTGRES_USER=movieplanet
+      - POSTGRES_PASSWORD=MoviePlanet
+      - POSTGRES_DB=movieplanet
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      # AJOUTE CETTE LIGNE CI-DESSOUS :
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
 volumes:
   postgres_data:
