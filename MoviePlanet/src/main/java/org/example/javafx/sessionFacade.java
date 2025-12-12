@@ -1,8 +1,5 @@
 package org.example.javafx;
 
-/**
- * 
- */
 public class SessionFacade {
 
     private static SessionFacade instance;
@@ -10,10 +7,7 @@ public class SessionFacade {
     private UserManagement userManager;
 
     private SessionFacade(){
-        this.userManager=userManager;
     }
-
-    public Static SessionFacade
 
     public static SessionFacade getInstance() {
         if (instance == null){
@@ -23,12 +17,12 @@ public class SessionFacade {
     }
 
     /**
-     * @param id 
+     * @param username
      * @param password 
      * @return
      */
-    public boolean login(int id, String password) {
-        return userManager.login(id,password);
+    public boolean login(String username, String password) {
+        return userManager.login(username,password);
     }
 
 }

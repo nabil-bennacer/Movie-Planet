@@ -1,4 +1,5 @@
 package org.example.javafx;
+import org.example.javafx.SessionFacade;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -6,6 +7,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class LoginController {
+
+    private SessionFacade sessionFacade;
 
     @FXML
     private TextField usernameField;
@@ -21,8 +24,9 @@ public class LoginController {
         String user = usernameField.getText();
         String pass = passwordField.getText();
 
-        // Exemple simple de vérification
-        if ("admin".equals(user) && "1234".equals(pass)) {
+        boolean bool = sessionFacade.login(user, pass);
+
+        if (bool) {
             messageLabel.setStyle("-fx-text-fill: green;");
             messageLabel.setText("Connexion réussie !");
             // Ici, vous changeriez de scène vers l'application principale
