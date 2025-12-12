@@ -1,16 +1,10 @@
+package Model;
+//DAO = Data Access Object
+import java.sql.SQLException;
 
-import java.io.*;
-import java.util.*;
-
-/**
- * 
- */
+//Retourne un objet de type User (l'utilisateur correspondant à cet ID).
+//Peut lever une exception SQLException si un problème survient lors de l'accès à la base de données.
 public interface userDAO {
-
-
-    /**
-     * 
-     */
-    public void findUserById(id: int): User();
+    User findUserById(int id) throws SQLException;
 
 }
