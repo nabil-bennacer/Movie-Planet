@@ -6,7 +6,9 @@ public class SessionFacade {
 
     private UserManagement userManager;
 
-    private SessionFacade(){
+    private SessionFacade() {
+        // CORRECTION IMPORTANTE : Initialiser le UserManagement ici
+        this.userManager = new UserManagement();
     }
 
     public static SessionFacade getInstance() {
@@ -16,13 +18,12 @@ public class SessionFacade {
         return instance;
     }
 
-    /**
-     * @param username
-     * @param password 
-     * @return
-     */
     public boolean login(String username, String password) {
-        return userManager.login(username,password);
+        // Vérification de sécurité
+        if (userManager == null) {
+            System.err.println("Erreur: UserManagement est null dans SessionFacade");
+            return false;
+        }
+        return userManager.login(username, password);
     }
-
 }

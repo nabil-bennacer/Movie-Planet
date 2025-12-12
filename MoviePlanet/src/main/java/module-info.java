@@ -11,6 +11,8 @@ module org.example.javafx {
     requires eu.hansolo.tilesfx;
     requires java.sql;
 
+    requires org.postgresql.jdbc;
+
     opens org.example.javafx to javafx.fxml;
     exports org.example.javafx;
 }

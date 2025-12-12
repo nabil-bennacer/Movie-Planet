@@ -1,11 +1,17 @@
 package org.example.javafx;
 
+import java.sql.SQLException;
+
 public class UserManagement {
 
     private UserDAO userDAO;
 
     public UserManagement() {
-        this.userDAO = DAOFactory.getInstance().createUserDAO();
+        try {
+            this.userDAO = DAOFactory.getInstance().createUserDAO();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public boolean login(String username, String password) {

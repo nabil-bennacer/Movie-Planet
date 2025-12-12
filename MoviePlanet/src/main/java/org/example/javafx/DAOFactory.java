@@ -1,6 +1,8 @@
 
 package org.example.javafx;
 
+import java.sql.SQLException;
+
 /**
  * 
  */
@@ -15,5 +17,5 @@ public abstract class DAOFactory {
         return instance;
     }
 
-    public abstract UserDAO createUserDAO();
+    public abstract UserDAO createUserDAO() throws SQLException;
 }
