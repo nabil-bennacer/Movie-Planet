@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: movieplanet_db
+    ports:
+      - "5432:5432" # Mappe le port du conteneur sur ton PC
+    environment:
+      - POSTGRES_USER=movieplanet     # Correspond à ton code Java
+      - POSTGRES_PASSWORD=MoviePlanet # Correspond à ton code Java
+      - POSTGRES_DB=movieplanet       # Correspond à ton code Java
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
