@@ -13,6 +13,16 @@ module org.example.javafx {
 
     requires org.postgresql.jdbc;
 
-    opens org.example.javafx to javafx.fxml;
-    exports org.example.javafx;
+    opens main to javafx.fxml;
+    exports main;
+    exports Controllers;
+    opens Controllers to javafx.fxml;
+    exports Facades;
+    opens Facades to javafx.fxml;
+    exports Services;
+    opens Services to javafx.fxml;
+    opens BuisnessClasses to javafx.fxml;
+    exports BuisnessClasses;
+    exports Persistence;
+    opens Persistence to javafx.fxml;
 }

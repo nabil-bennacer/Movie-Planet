@@ -1,4 +1,4 @@
-package org.example.javafx;
+package BuisnessClasses;
 
 public class User {
     private int id;

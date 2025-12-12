@@ -12,7 +12,6 @@ services:
       - POSTGRES_DB=movieplanet
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      # AJOUTE CETTE LIGNE CI-DESSOUS :
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
 volumes:

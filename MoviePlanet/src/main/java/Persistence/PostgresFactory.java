@@ -1,4 +1,4 @@
-package org.example.javafx;
+package Persistence;
 
 import java.sql.SQLException;
 

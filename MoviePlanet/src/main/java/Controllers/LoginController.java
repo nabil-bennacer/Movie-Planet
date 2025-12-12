@@ -1,9 +1,10 @@
-package org.example.javafx;
+package Controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import Facades.SessionFacade;
 
 public class LoginController {
 

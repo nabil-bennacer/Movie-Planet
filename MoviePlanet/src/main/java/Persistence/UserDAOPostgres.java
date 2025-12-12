@@ -1,7 +1,7 @@
-package org.example.javafx;
+package Persistence;
 
 import java.sql.*;
-import org.example.javafx.User;
+import BuisnessClasses.User;
 
 public class UserDAOPostgres implements UserDAO {
     private Connection dbConnection;
