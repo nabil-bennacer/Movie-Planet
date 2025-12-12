@@ -7,18 +7,22 @@ import java.util.*;
  */
 public class SessionFacade {
 
-    /**
-     * Default constructor
-     */
-    public SessionFacade() {
-    }
+    private static SessionFacade instance;
 
-    /**
-     * 
-     */
     private UserManagement userManager;
 
+    private SessionFacade(){
+        this.userManager=userManager;
+    }
 
+    public Static SessionFacade
+
+    public static SessionFacade getInstance() {
+        if (instance == null){
+            instance = new SessionFacade();
+        }
+        return instance;
+    }
 
     /**
      * @param id 
@@ -26,8 +30,7 @@ public class SessionFacade {
      * @return
      */
     public boolean login(int id, String password) {
-        // TODO implement here
-        return false;
+        return userManager.login(id,password);
     }
 
 }
