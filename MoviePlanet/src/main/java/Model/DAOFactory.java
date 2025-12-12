@@ -19,9 +19,6 @@ public abstract class DAOFactory {
     private void IsAbstract;
 
 
-
-
-
     /**
      * @return
      */
