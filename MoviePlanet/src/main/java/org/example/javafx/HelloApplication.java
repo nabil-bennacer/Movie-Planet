@@ -13,7 +13,7 @@ public class HelloApplication extends Application {
         // On charge le fichier login-view.fxml
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
 
-        Scene scene = new Scene(fxmlLoader.load(), 400, 300);
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         stage.setTitle("Login");
         stage.setScene(scene);
         stage.show();
