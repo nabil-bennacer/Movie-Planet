@@ -19,4 +19,13 @@ public class PostgresFactory extends DAOFactory {
         }
     }
 
+    @Override
+    public ArticleDAO createArticleDAO() {
+        try {
+            return new ArticleDAOPostgres();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
