@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"Persistence","l":"DAOFactory"},{"p":"Persistence","l":"PostgresFactory"},{"p":"Facades","l":"SessionFacade"},{"p":"BuisnessClasses","l":"User"},{"p":"Persistence","l":"UserDAO"},{"p":"Persistence","l":"UserDAOPostgres"},{"p":"Services","l":"UserManagement"}];updateSearchResults();

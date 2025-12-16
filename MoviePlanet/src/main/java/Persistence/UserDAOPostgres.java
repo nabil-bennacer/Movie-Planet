@@ -7,9 +7,15 @@ public class UserDAOPostgres implements UserDAO {
     private Connection dbConnection;
 
     public UserDAOPostgres() throws SQLException {
-        String url = "jdbc:postgresql://localhost:5432/movieplanet";
-        String user = "movieplanet";
-        String password = "MoviePlanet";
+//        String url = "jdbc:postgresql://localhost:5432/movieplanet";
+//        String user = "movieplanet";
+//        String password = "MoviePlanet";
+//        String url = System.getenv("DB_URL");
+//        String user = System.getenv("DB_USER");
+//        String password = System.getenv("DB_PASSWORD");
+        String url = "jdbc:postgresql://ep-morning-wind-agpw3rb0-pooler.c-2.eu-central-1.aws.neon.tech:5432/neondb?sslmode=require";
+        String user = "neondb_owner";
+        String password = "npg_NXDSbcf26hVt";
         this.dbConnection = DriverManager.getConnection(url, user, password);
 
         initializeDatabase();
