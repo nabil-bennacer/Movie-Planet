@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AdminController">
+    <children>
+        <Pane prefHeight="80.0" prefWidth="800.0" style="-fx-background-color: #333;">
+            <children>
+                <Label layoutX="24.0" layoutY="25.0" text="Movie Planet - Administration" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Button layoutX="680.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleLogout" text="Déconnexion" />
+            </children>
+        </Pane>
+
+        <Label layoutX="24.0" layoutY="100.0" text="Gestion des Utilisateurs">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+
+        <TableView fx:id="userTable" layoutX="24.0" layoutY="140.0" prefHeight="380.0" prefWidth="750.0">
+            <columns>
+                <TableColumn fx:id="idColumn" prefWidth="50.0" text="ID" />
+                <TableColumn fx:id="usernameColumn" prefWidth="200.0" text="Pseudo" />
+                <TableColumn fx:id="emailColumn" prefWidth="300.0" text="Email" />
+                <TableColumn fx:id="roleColumn" prefWidth="150.0" text="Rôle" />
+            </columns>
+        </TableView>
+
+        <Button layoutX="600.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleDeleteUser" style="-fx-background-color: #ff4444; -fx-text-fill: white;" text="Supprimer l'utilisateur sélectionné" />
+        <Button layoutX="24.0" layoutY="540.0" mnemonicParsing="false" onAction="#initialize" text="Rafraîchir la liste" />
+    </children>
+</AnchorPane>

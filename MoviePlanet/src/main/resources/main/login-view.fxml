@@ -7,17 +7,20 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
 
     <children>
-        <Button layoutX="284.0" layoutY="251.0" mnemonicParsing="false" onAction="#onLoginButtonClick" text="Login" />
+        <ImageView fitHeight="102.0" fitWidth="126.0" layoutX="256.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/logo.png" />
+            </image>
+        </ImageView>
 
-        <TextField fx:id="usernameField" layoutX="232.0" layoutY="137.0" promptText="username" />
+        <TextField fx:id="usernameField" layoutX="232.0" layoutY="137.0" promptText="Nom d'utilisateur" />
+        <PasswordField fx:id="passwordField" layoutX="232.0" layoutY="174.0" promptText="Mot de passe" />
 
-        <PasswordField fx:id="passwordField" layoutX="232.0" layoutY="174.0" promptText="Password" />
+        <Button layoutX="284.0" layoutY="220.0" mnemonicParsing="false" onAction="#onLoginButtonClick" text="Login" />
 
-        <Label fx:id="messageLabel" layoutX="232.0" layoutY="210.0" textFill="red" />
-      <ImageView fitHeight="102.0" fitWidth="126.0" layoutX="256.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/logo.png" />
-         </image>
-      </ImageView>
+        <Label fx:id="messageLabel" alignment="CENTER" layoutX="150.0" layoutY="260.0" prefWidth="300.0" textFill="red" />
+
+        <Hyperlink layoutX="225.0" layoutY="300.0" onAction="#onRegisterLinkClick" text="Pas de compte ? S'inscrire ici" />
+
     </children>
 </AnchorPane>
