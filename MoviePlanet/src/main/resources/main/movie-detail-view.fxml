@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MovieDetailController">
+    <children>
+        <Button layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#goBack" text="← Retour au catalogue" />
+
+        <HBox layoutX="50.0" layoutY="80.0" spacing="30.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="80.0">
+            <children>
+                <ImageView fx:id="posterImage" fitHeight="400.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" />
+
+                <VBox spacing="15.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label fx:id="titleLabel" text="Titre du Film" wrapText="true">
+                            <font><Font name="System Bold" size="32.0" /></font>
+                        </Label>
+
+                        <HBox spacing="20.0">
+                            <children>
+                                <Label fx:id="genreLabel" style="-fx-background-color: #ddd; -fx-padding: 5 10; -fx-background-radius: 15;" text="Genre" />
+                                <Label fx:id="durationLabel" style="-fx-text-fill: #666;" text="120 min" />
+                            </children>
+                        </HBox>
+
+                        <Separator prefWidth="200.0" />
+
+                        <Label text="Synopsis" underline="true">
+                            <font><Font size="18.0" /></font>
+                        </Label>
+
+                        <TextArea fx:id="descriptionArea" editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS" />
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

@@ -4,35 +4,101 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AdminController">
+<AnchorPane prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AdminController">
     <children>
-        <Pane prefHeight="80.0" prefWidth="800.0" style="-fx-background-color: #333;">
+        <Pane prefHeight="60.0" prefWidth="900.0" style="-fx-background-color: #2c3e50;">
             <children>
-                <Label layoutX="24.0" layoutY="25.0" text="Movie Planet - Administration" textFill="WHITE">
-                    <font>
-                        <Font size="24.0" />
-                    </font>
+                <Label layoutX="20.0" layoutY="15.0" text="Administration - Movie Planet" textFill="WHITE">
+                    <font><Font name="System Bold" size="20.0" /></font>
                 </Label>
-                <Button layoutX="680.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleLogout" text="Déconnexion" />
+                <Button layoutX="780.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleLogout" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="Déconnexion" />
             </children>
         </Pane>
 
-        <Label layoutX="24.0" layoutY="100.0" text="Gestion des Utilisateurs">
-            <font>
-                <Font size="18.0" />
-            </font>
-        </Label>
+        <TabPane layoutY="60.0" prefHeight="590.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
 
-        <TableView fx:id="userTable" layoutX="24.0" layoutY="140.0" prefHeight="380.0" prefWidth="750.0">
-            <columns>
-                <TableColumn fx:id="idColumn" prefWidth="50.0" text="ID" />
-                <TableColumn fx:id="usernameColumn" prefWidth="200.0" text="Pseudo" />
-                <TableColumn fx:id="emailColumn" prefWidth="300.0" text="Email" />
-                <TableColumn fx:id="roleColumn" prefWidth="150.0" text="Rôle" />
-            </columns>
-        </TableView>
+                <Tab text="Utilisateurs">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Label layoutX="20.0" layoutY="20.0" text="Liste des comptes inscrits">
+                                    <font><Font size="16.0" /></font>
+                                </Label>
+                                <TableView fx:id="userTable" layoutX="20.0" layoutY="60.0" prefHeight="400.0" prefWidth="860.0">
+                                    <columns>
+                                        <TableColumn fx:id="userIdColumn" prefWidth="50.0" text="ID" />
+                                        <TableColumn fx:id="userPseudoColumn" prefWidth="200.0" text="Pseudo" />
+                                        <TableColumn fx:id="userEmailColumn" prefWidth="300.0" text="Email" />
+                                        <TableColumn fx:id="userRoleColumn" prefWidth="150.0" text="Rôle" />
+                                    </columns>
+                                </TableView>
+                                <Button layoutX="20.0" layoutY="480.0" mnemonicParsing="false" onAction="#handleDeleteUser" style="-fx-background-color: red; -fx-text-fill: white;" text="Supprimer l'utilisateur sélectionné" />
+                                <Button layoutX="800.0" layoutY="480.0" mnemonicParsing="false" onAction="#initialize" text="Rafraîchir" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
 
-        <Button layoutX="600.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleDeleteUser" style="-fx-background-color: #ff4444; -fx-text-fill: white;" text="Supprimer l'utilisateur sélectionné" />
-        <Button layoutX="24.0" layoutY="540.0" mnemonicParsing="false" onAction="#initialize" text="Rafraîchir la liste" />
+                <Tab text="Catalogue Films">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TableView fx:id="movieTable" layoutX="20.0" layoutY="50.0" prefHeight="300.0" prefWidth="500.0">
+                                    <columns>
+                                        <TableColumn fx:id="movieIdColumn" prefWidth="40.0" text="ID" />
+                                        <TableColumn fx:id="movieTitleColumn" prefWidth="150.0" text="Titre" />
+                                        <TableColumn fx:id="movieGenreColumn" prefWidth="100.0" text="Genre" />
+                                        <TableColumn fx:id="movieDurationColumn" prefWidth="80.0" text="Durée (min)" />
+                                    </columns>
+                                </TableView>
+                                <Button layoutX="20.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleDeleteMovie" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="Supprimer le film sélectionné" />
+
+                                <Label layoutX="540.0" layoutY="20.0" text="Ajouter un nouveau film" underline="true">
+                                    <font><Font name="System Bold" size="14.0" /></font>
+                                </Label>
+
+                                <VBox layoutX="540.0" layoutY="50.0" spacing="10.0" prefWidth="320.0">
+                                    <children>
+                                        <TextField fx:id="titleField" promptText="Titre du film" />
+                                        <TextField fx:id="genreField" promptText="Genre (ex: Action, Sci-Fi)" />
+                                        <TextField fx:id="durationField" promptText="Durée en minutes (ex: 120)" />
+                                        <TextField fx:id="posterUrlField" promptText="URL de l'affiche (Image)" />
+                                        <TextArea fx:id="descriptionArea" prefHeight="100.0" promptText="Synopsis / Description" wrapText="true" />
+
+                                        <Button mnemonicParsing="false" onAction="#handleAddMovie" prefWidth="320.0" style="-fx-background-color: #27ae60; -fx-text-fill: white;" text="Ajouter au catalogue" />
+                                        <Label fx:id="movieMessageLabel" alignment="CENTER" prefWidth="320.0" textFill="#e74c3c" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+
+                <Tab text="Notifications">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Label layoutX="50.0" layoutY="40.0" text="Envoyer une notification générale" underline="true">
+                                    <font><Font size="18.0" /></font>
+                                </Label>
+
+                                <Label layoutX="50.0" layoutY="80.0" text="Ce message sera visible par tous les utilisateurs." textFill="#666" />
+
+                                <TextArea fx:id="notifMessageArea" layoutX="50.0" layoutY="110.0" prefHeight="150.0" prefWidth="600.0" promptText="Écrivez votre message ici..." wrapText="true" />
+
+                                <Button layoutX="50.0" layoutY="280.0" mnemonicParsing="false" onAction="#handleSendNotification" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #2980b9; -fx-text-fill: white;" text="Envoyer" />
+
+                                <Label fx:id="notifStatusLabel" layoutX="220.0" layoutY="290.0" textFill="#2980b9">
+                                    <font><Font name="System Bold" size="14.0" /></font>
+                                </Label>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+
+            </tabs>
+
+        </TabPane>
     </children>
 </AnchorPane>

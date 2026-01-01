@@ -50,8 +50,8 @@ public class LoginController {
         if (success) {
             User currentUser = sessionFacade.getCurrentUser();
 
+            // Vérification du rôle
             if (currentUser != null && "Admin".equals(currentUser.getRole())) {
-
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/admin-view.fxml"));
                     Parent root = loader.load();
@@ -64,12 +64,17 @@ public class LoginController {
                     messageLabel.setText("Erreur de chargement Dashboard Admin.");
                 }
             } else {
-                messageLabel.setStyle("-fx-text-fill: green; -fx-font-weight: bold;");
-                messageLabel.setText("Connexion réussie !");
-
-
-                 usernameField.clear();
-                 passwordField.clear();
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/movie-view.fxml"));
+                    Parent root = loader.load();
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.setScene(new Scene(root));
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    messageLabel.setStyle("-fx-text-fill: red;");
+                    messageLabel.setText("Erreur de chargement Catalogue Films.");
+                }
             }
 
         } else {

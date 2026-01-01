@@ -1,25 +1,20 @@
 package Persistence;
 
-import java.sql.*;
-import BuisnessClasses.User;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import BuisnessClasses.User;
 
 public class UserDAOPostgres implements UserDAO {
     private Connection dbConnection;
 
     public UserDAOPostgres() throws SQLException {
-//        String url = "jdbc:postgresql://localhost:5432/movieplanet";
-//        String user = "movieplanet";
-//        String password = "MoviePlanet";
-//        String url = System.getenv("DB_URL");
-//        String user = System.getenv("DB_USER");
-//        String password = System.getenv("DB_PASSWORD");
-        String url = "jdbc:postgresql://ep-morning-wind-agpw3rb0-pooler.c-2.eu-central-1.aws.neon.tech:5432/neondb?sslmode=require";
-        String user = "neondb_owner";
-        String password = "npg_NXDSbcf26hVt";
-        this.dbConnection = DriverManager.getConnection(url, user, password);
-
+        this.dbConnection = DAOFactory.getConnection();
     }
 
 

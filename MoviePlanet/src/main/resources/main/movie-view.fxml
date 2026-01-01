@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.HomeController">
+    <children>
+        <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="900.0" style="-fx-background-color: #2c3e50;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label text="Movie Planet" textFill="WHITE">
+                    <font><Font name="System Bold" size="24.0" /></font>
+                    <HBox.margin><Insets left="20.0" /></HBox.margin>
+                </Label>
+                <Region HBox.hgrow="ALWAYS" />
+                <Button mnemonicParsing="false" onAction="#openNotifications" text="🔔 Notifications">
+                    <HBox.margin><Insets right="10.0" /></HBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#handleLogout" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="Déconnexion">
+                    <HBox.margin><Insets right="20.0" /></HBox.margin>
+                </Button>
+            </children>
+        </HBox>
+
+        <Label fx:id="welcomeLabel" layoutX="20.0" layoutY="80.0" text="Bienvenue !">
+            <font><Font size="20.0" /></font>
+        </Label>
+
+        <ScrollPane fitToWidth="true" layoutX="20.0" layoutY="120.0" prefHeight="460.0" prefWidth="860.0" style="-fx-background: transparent; -fx-background-color: transparent;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="120.0">
+            <content>
+                <FlowPane fx:id="moviesContainer" hgap="20.0" vgap="20.0" prefWrapLength="800.0" style="-fx-padding: 10;">
+                </FlowPane>
+            </content>
+        </ScrollPane>
+    </children>
+</AnchorPane>

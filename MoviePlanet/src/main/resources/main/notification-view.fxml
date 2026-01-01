@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.NotificationController">
+    <children>
+        <Label layoutX="20.0" layoutY="20.0" text="Notifications">
+            <font><Font name="System Bold" size="18.0" /></font>
+        </Label>
+
+        <ListView fx:id="notificationList" layoutX="20.0" layoutY="60.0" prefHeight="280.0" prefWidth="260.0" />
+
+        <Button layoutX="120.0" layoutY="355.0" mnemonicParsing="false" onAction="#closeWindow" text="Fermer" />
+    </children>
+</AnchorPane>
