@@ -2,7 +2,6 @@ package Facades;
 
 import BuisnessClasses.Article;
 import Services.CatalogueManagement;
-
 import java.util.List;
 
 public class StoreFacade {
@@ -21,22 +20,23 @@ public class StoreFacade {
     }
 
     public boolean ajouterAuPanier(int currentUserId, int articleId, int qte) {
-        // 1. Vérifier si le stock est suffisant via le Manager (qui gère déjà les exceptions SQL)
         if (catalogueManagement.verifierStock(articleId, qte)) {
-
-            // 2. Tenter de décrémenter le stock en base de données
-            boolean stockMisAJour = catalogueManagement.decrementerStock(articleId, qte);
-
-            if (stockMisAJour) {
-                /*
-                // 3. Si le stock a bien été décrémenté, on ajoute l'article au panier
-                panierManager.ajouter(currentUserId, articleId, qte);
-                return true; // Succès
-                */
-            }
+            // catalogueManagement.decrementerStock(articleId, qte);
+            // panierManager.ajouter(currentUserId, articleId, qte);
+            return true;
         }
-
-        // 4. Echec : Stock insuffisant ou erreur BDD
         return false;
+    }
+
+    public boolean ajouterArticle(Article article) {
+        return catalogueManagement.ajouterArticle(article);
+    }
+
+    public boolean modifierArticle(Article article) {
+        return catalogueManagement.modifierArticle(article);
+    }
+
+    public boolean supprimerArticle(int id) {
+        return catalogueManagement.supprimerArticle(id);
     }
 }

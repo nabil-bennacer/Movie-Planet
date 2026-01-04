@@ -54,7 +54,7 @@ public class LoginController {
 
             try {
 
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/userStore-view.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/adminStore-view.fxml"));
                 Parent root = fxmlLoader.load();
 
                 Stage stage = (Stage) messageLabel.getScene().getWindow();

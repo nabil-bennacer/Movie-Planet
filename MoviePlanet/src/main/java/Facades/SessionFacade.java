@@ -9,7 +9,6 @@ public class SessionFacade {
     private UserManagement userManager;
 
     private SessionFacade() {
-        // CORRECTION IMPORTANTE : Initialiser le UserManagement ici
         this.userManager = new UserManagement();
     }
 

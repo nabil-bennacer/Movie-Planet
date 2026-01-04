@@ -36,4 +36,24 @@ public class Article {
     public boolean estEnRupture() {
         return this.stock <= 0;
     }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setPrix(double prix) {
+        this.prix = prix;
+    }
+
+    public void setFilmLie(String film) {
+        this.filmLie = filmLie;
+    }
+
+    public void setImageUrl(String img) {
+        this.imageUrl = img;
+    }
+
+    public void setDescription(String desc) {
+        this.description = desc;
+    }
 }
