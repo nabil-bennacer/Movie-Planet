@@ -1,10 +1,16 @@
 package Controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import Facades.SessionFacade;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class LoginController {
 
@@ -45,7 +51,26 @@ public class LoginController {
         if (bool) {
             messageLabel.setStyle("-fx-text-fill: green;");
             messageLabel.setText("Connexion réussie !");
-            // TODO: Code pour changer de scène ici
+
+            try {
+
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/userStore-view.fxml"));
+                Parent root = fxmlLoader.load();
+
+                Stage stage = (Stage) messageLabel.getScene().getWindow();
+
+                Scene scene = new Scene(root, 800, 600);
+                stage.setTitle("Movie Planet - Boutique");
+                stage.setScene(scene);
+                stage.centerOnScreen();
+                stage.show();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                messageLabel.setStyle("-fx-text-fill: red;");
+                messageLabel.setText("Erreur lors du chargement de la boutique.");
+            }
+
         } else {
             messageLabel.setStyle("-fx-text-fill: red;");
             messageLabel.setText("Identifiants incorrects.");

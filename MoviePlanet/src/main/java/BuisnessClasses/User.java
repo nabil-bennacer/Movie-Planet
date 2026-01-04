@@ -5,12 +5,14 @@ public class User {
     private String password;
     private String nom;
     private String email;
+    private String role;
 
-    public User(int id, String password, String nom, String email) {
+    public User(int id, String password, String nom, String email, String role) {
         this.id = id;
         this.password  = password;
         this.nom = nom;
         this.email = email;
+        this.role = role;
     }
 
     public boolean verifyPassword(String pass) {
@@ -19,5 +21,13 @@ public class User {
         }
 
         return this.password.equals(pass);
-        }
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public boolean isAdmin() {
+        return "admin".equals(this.role);
+    }
 }

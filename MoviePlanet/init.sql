@@ -1,16 +1,22 @@
--- Création de la table (au cas où elle n'existe pas encore)
+DROP TABLE IF EXISTS users CASCADE;
+
 CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
     username VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     nom VARCHAR(255),
-    email VARCHAR(255)
+    email VARCHAR(255),
+    role VARCHAR(20) NOT NULL DEFAULT 'visitor' CHECK (role IN ('admin', 'visitor'))
 );
 
--- Insertion de l'utilisateur par défaut (Admin)
--- ON CONFLICT (username) DO NOTHING permet d'éviter les erreurs si on relance le script
-INSERT INTO users (username, password, nom, email)
-VALUES ('testUser', 'testPass', 'Utilisateur Test', 'test@movieplanet.fr')
+-- Insertion de l'utilisateur Admin
+INSERT INTO users (username, password, nom, email, role)
+VALUES ('admin', '1234', 'Administrateur', 'admin@movieplanet.fr', 'admin')
+ON CONFLICT (username) DO NOTHING;
+
+-- Insertion d'un utilisateur Visiteur pour tester
+INSERT INTO users (username, password, nom, email, role)
+VALUES ('visitor', '1234', 'Visiteur Test', 'visitor@movieplanet.fr', 'visitor')
 ON CONFLICT (username) DO NOTHING;
 
 -- 1. Création de la table 'articles' (identique à celle définie dans Java)
