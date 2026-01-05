@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StoreUserController">
+
+    <top>
+        <AnchorPane prefHeight="80.0" prefWidth="800.0" style="-fx-background-color: #2c3e50;" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="24.0" layoutY="24.0" text="Movie-Planet Store" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                </Label>
+
+                <HBox layoutX="268.0" layoutY="27.0" spacing="10.0">
+                    <children>
+                        <TextField fx:id="searchField" prefHeight="26.0" prefWidth="250.0" promptText="Rechercher un article ou un film..." />
+                        <Button mnemonicParsing="false" onAction="#onRecherche" text="Rechercher" />
+                    </children>
+                </HBox>
+
+                <Button layoutX="680.0" layoutY="27.0" mnemonicParsing="false" text="Panier (0)" fx:id="panierButton" style="-fx-background-color: #e67e22; -fx-text-fill: white;" />
+            </children>
+        </AnchorPane>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" BorderPane.alignment="CENTER">
+            <content>
+                <TilePane fx:id="articleGrid" hgap="20.0" prefColumns="3" prefTileHeight="250.0" prefTileWidth="220.0" style="-fx-padding: 20;" vgap="20.0">
+                </TilePane>
+            </content>
+        </ScrollPane>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_LEFT" prefHeight="30.0" style="-fx-background-color: #ecf0f1; -fx-padding: 5;">
+            <Label fx:id="messageLabel" text="" />
+        </HBox>
+    </bottom>
+
+</BorderPane>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StoreAdminController">
+
+    <top>
+        <AnchorPane prefHeight="60.0" style="-fx-background-color: #c0392b;">
+            <Label text="Administration du Catalogue" textFill="WHITE" layoutX="20.0" layoutY="15.0">
+                <font><Font name="System Bold" size="20.0" /></font>
+            </Label>
+        </AnchorPane>
+    </top>
+
+    <center>
+        <SplitPane dividerPositions="0.6">
+            <items>
+                <VBox spacing="10.0" style="-fx-padding: 10;">
+                    <Label text="Liste des articles" style="-fx-font-weight: bold;"/>
+                    <TableView fx:id="articlesTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colNom" text="Nom" prefWidth="150"/>
+                            <TableColumn fx:id="colFilm" text="Film" prefWidth="100"/>
+                            <TableColumn fx:id="colPrix" text="Prix (€)" prefWidth="80"/>
+                            <TableColumn fx:id="colStock" text="Stock" prefWidth="60"/>
+                        </columns>
+                    </TableView>
+                    <HBox spacing="10" alignment="CENTER_RIGHT">
+                        <Button text="Nouveau" onAction="#onNouveauClick" style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
+                        <Button text="Supprimer Sélection" onAction="#onSupprimerClick" style="-fx-background-color: #e74c3c; -fx-text-fill: white;"/>
+                    </HBox>
+                </VBox>
+
+                <VBox spacing="15.0" style="-fx-padding: 20; -fx-background-color: #ecf0f1;">
+                    <Label text="Détails de l'article" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+
+                    <GridPane vgap="10" hgap="10">
+                        <Label text="Nom :" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="nomField" promptText="Ex: Figurine Yoda" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                        <Label text="Film lié :" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <TextField fx:id="filmField" promptText="Ex: Star Wars" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <Label text="Prix :" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <TextField fx:id="prixField" promptText="0.00" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                        <Label text="Stock :" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <TextField fx:id="stockField" promptText="Quantité disponible" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                        <Label text="Image URL :" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                        <TextField fx:id="imageField" promptText="http://..." GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+                        <Label text="Description :" GridPane.rowIndex="5" GridPane.columnIndex="0" GridPane.valignment="TOP"/>
+                        <TextArea fx:id="descField" promptText="Description détaillée du produit..." prefHeight="100" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+                    </GridPane>
+
+                    <Button text="Valider / Enregistrer" onAction="#onValiderClick" maxWidth="Infinity" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14;"/>
+
+                    <Label fx:id="messageLabel" text="" wrapText="true"/>
+                </VBox>
+            </items>
+        </SplitPane>
+    </center>
+</BorderPane>

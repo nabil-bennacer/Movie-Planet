@@ -26,5 +26,10 @@ public class User {
         }
 
         return this.password.equals(pass);
-        }
+    }
+
+    public boolean isAdmin() {
+        return "admin".equals(this.role);
+    }
+
 }
