@@ -30,4 +30,8 @@ public class User {
     public boolean isAdmin() {
         return "admin".equals(this.role);
     }
+
+    public int getId() {
+        return this.id;
+    }
 }

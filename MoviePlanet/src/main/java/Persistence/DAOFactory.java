@@ -19,4 +19,5 @@ public abstract class DAOFactory {
 
     public abstract UserDAO createUserDAO() throws SQLException;
     public abstract ArticleDAO createArticleDAO() throws SQLException;
+    public abstract CommentaireDAO createCommentaireDAO() throws SQLException;
 }

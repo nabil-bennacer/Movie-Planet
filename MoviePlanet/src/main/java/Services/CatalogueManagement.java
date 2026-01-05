@@ -3,6 +3,8 @@ package Services;
 import Persistence.DAOFactory;
 import Persistence.ArticleDAO;
 import BuisnessClasses.Article;
+import Persistence.CommentaireDAO;
+import BuisnessClasses.Commentaire;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,28 +14,27 @@ import java.util.stream.Collectors;
 public class CatalogueManagement {
 
     private ArticleDAO articleDAO;
+    private CommentaireDAO commentaireDAO;
 
     public CatalogueManagement() {
         try {
-            // Utilisation du Singleton comme dans votre UserManagement
             this.articleDAO = DAOFactory.getInstance().createArticleDAO();
+            this.commentaireDAO = DAOFactory.getInstance().createCommentaireDAO();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    // Récupérer tous les articles (Flux Principal Store)
     public List<Article> getArticles() {
         try {
             return articleDAO.findAll();
         } catch (SQLException e) {
             System.err.println("Erreur dans CatalogueManagement (getArticles): " + e.getMessage());
             e.printStackTrace();
-            return new ArrayList<>(); // Retourne une liste vide en cas d'erreur
+            return new ArrayList<>();
         }
     }
 
-    // Filtrer les articles (Recherche Utilisateur)
     public List<Article> filtrerArticles(String critere) {
         try {
             List<Article> allArticles = articleDAO.findAll();
@@ -55,7 +56,6 @@ public class CatalogueManagement {
         }
     }
 
-    // Vérifier la disponibilité (Utilisé avant ajout au panier)
     public boolean verifierStock(int id, int qte) {
         try {
             Article article = articleDAO.findById(id);
@@ -67,7 +67,6 @@ public class CatalogueManagement {
         }
     }
 
-    // Décrémenter le stock (Après validation panier)
     public boolean decrementerStock(int id, int qte) {
         try {
             Article article = articleDAO.findById(id);
@@ -83,8 +82,6 @@ public class CatalogueManagement {
             return false;
         }
     }
-
-    // --- Méthodes pour l'Administrateur (Gestion Catalogue) ---
 
     public boolean ajouterArticle(Article article) {
         try {
@@ -114,6 +111,27 @@ public class CatalogueManagement {
             return true;
         } catch (SQLException e) {
             System.err.println("Erreur dans CatalogueManagement (supprimerArticle): " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public List<Commentaire> getCommentaires(int articleId) {
+        try {
+            return commentaireDAO.findByArticleId(articleId);
+        } catch (SQLException e) {
+            System.err.println("Erreur getCommentaires: " + e.getMessage());
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
+    public boolean ajouterCommentaire(Commentaire c) {
+        try {
+            commentaireDAO.create(c);
+            return true;
+        } catch (SQLException e) {
+            System.err.println("Erreur ajouterCommentaire: " + e.getMessage());
             e.printStackTrace();
             return false;
         }

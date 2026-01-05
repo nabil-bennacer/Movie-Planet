@@ -28,4 +28,13 @@ public class PostgresFactory extends DAOFactory {
         }
     }
 
+    @Override
+    public CommentaireDAO createCommentaireDAO() {
+        try {
+            return new CommentaireDAOPostgres();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

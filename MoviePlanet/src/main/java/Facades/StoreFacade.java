@@ -2,6 +2,7 @@ package Facades;
 
 import BuisnessClasses.Article;
 import Services.CatalogueManagement;
+import BuisnessClasses.Commentaire;
 import java.util.List;
 
 public class StoreFacade {
@@ -38,5 +39,13 @@ public class StoreFacade {
 
     public boolean supprimerArticle(int id) {
         return catalogueManagement.supprimerArticle(id);
+    }
+
+    public List<Commentaire> getCommentaires(int articleId) {
+        return catalogueManagement.getCommentaires(articleId);
+    }
+
+    public boolean ajouterCommentaire(Commentaire c) {
+        return catalogueManagement.ajouterCommentaire(c);
     }
 }
