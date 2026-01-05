@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS articles (
 
 -- Article 1 : Star Wars
 INSERT INTO articles (nom, prix, description, image_url, stock, film_lie)
-VALUES ('Sabre Laser Skywalker', 129.99, 'Réplique officielle FX du sabre laser bleu.', 'img/sabre_blue.png', 15, 'Star Wars');
+VALUES ('Sabre Laser Skywalker', 129.99, 'Réplique officielle FX du sabre laser bleu.', 'img/sabre.png', 15, 'Star Wars');
 
 -- Article 2 : Batman
 INSERT INTO articles (nom, prix, description, image_url, stock, film_lie)
