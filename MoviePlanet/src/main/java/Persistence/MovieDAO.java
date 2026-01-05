@@ -7,6 +7,7 @@ import java.util.List;
 public interface MovieDAO {
     List<Movie> findAll() throws SQLException;
     Movie findById(int id) throws SQLException;
+    List<Movie> searchByTitle(String titleQuery) throws SQLException;
 
     boolean createMovie(Movie movie) throws SQLException;
     boolean deleteMovie(int id) throws SQLException;

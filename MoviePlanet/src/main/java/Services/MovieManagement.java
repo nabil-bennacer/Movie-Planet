@@ -36,6 +36,15 @@ public class MovieManagement {
         }
     }
 
+    public List<Movie> searchMovies(String query) {
+        try {
+            return movieDAO.searchByTitle(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return Collections.emptyList();
+        }
+    }
+
     public boolean createMovie(String title, String desc, String genre, int duration, String url) {
         try {
             // ID à 0 car généré par la BDD

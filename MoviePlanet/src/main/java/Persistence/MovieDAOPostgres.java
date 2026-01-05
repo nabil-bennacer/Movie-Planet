@@ -44,6 +44,22 @@ public class MovieDAOPostgres implements MovieDAO {
         return null;
     }
 
+    public List<Movie> searchByTitle(String titleQuery) throws SQLException{
+        List<Movie> movies = new ArrayList<>();
+        String query = "SELECT * FROM movies WHERE title ILIKE ?";
+
+        try (PreparedStatement stmt = dbConnection.prepareStatement(query)) {
+            stmt.setString(1, "%" + titleQuery + "%");
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    movies.add(mapResultSetToMovie(rs));
+                }
+            }
+        }
+        return movies;
+    }
+
     @Override
     public boolean createMovie(Movie movie) throws SQLException {
         String query = "INSERT INTO movies (title, description, genre, duration, poster_url) VALUES (?, ?, ?, ?, ?)";

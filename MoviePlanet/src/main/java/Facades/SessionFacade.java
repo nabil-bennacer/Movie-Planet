@@ -39,6 +39,10 @@ public class SessionFacade {
         return movieManager.getMovieById(id);
     }
 
+    public List<Movie> searchMovies(String query) {
+        return movieManager.searchMovies(query);
+    }
+
     public boolean login(String username, String password) {
         User user = userManager.login(username, password);
         if (user != null) {

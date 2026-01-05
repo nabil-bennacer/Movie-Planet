@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
@@ -23,6 +24,7 @@ public class HomeController {
 
     @FXML private Label welcomeLabel;
     @FXML private FlowPane moviesContainer;
+    @FXML private TextField searchField;
 
     @FXML
     public void initialize() {
@@ -84,7 +86,7 @@ public class HomeController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/movie-detail-view.fxml"));
             Parent root = loader.load();
 
-            // Injection du film dans le contrôleur suivant
+
             MovieDetailController controller = loader.getController();
             controller.setMovie(movie);
 
@@ -121,6 +123,31 @@ public class HomeController {
 
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void handleSearch() {
+        String query = searchField.getText();
+
+        List<Movie> results;
+        if (query == null || query.trim().isEmpty()) {
+            results = SessionFacade.getInstance().getAllMovies();
+        } else {
+            results = SessionFacade.getInstance().searchMovies(query);
+        }
+
+        moviesContainer.getChildren().clear();
+
+        if (results == null || results.isEmpty()) {
+            Label noResultLabel = new Label("Aucun film trouvé.");
+            noResultLabel.setStyle("-fx-text-fill: white; -fx-font-size: 16;");
+            moviesContainer.getChildren().add(noResultLabel);
+        } else {
+            for (Movie movie : results) {
+                VBox card = createMovieCard(movie);
+                moviesContainer.getChildren().add(card);
+            }
         }
     }
 }
