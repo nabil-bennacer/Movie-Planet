@@ -18,17 +18,21 @@ public class UserManagement {
         }
     }
 
-    public boolean login(String username, String password) {
+    public User login(String username, String password) {
         try {
             User user = userDAO.findUserByUsername(username);
 
-            if(user == null) {return false;}
+            if(user == null) { return null; }
 
-            return user.verifyPassword(password);
+            if (user.verifyPassword(password)) {
+                return user;
+            }
+            return null;
+
         } catch (Exception e) {
-            System.err.println("Erreur dans LoginController: " + e.getMessage());
+            System.err.println("Erreur dans UserManagement: " + e.getMessage());
             e.printStackTrace();
-            return false;
+            return null;
         }
     }
 }

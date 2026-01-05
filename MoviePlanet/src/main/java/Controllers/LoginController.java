@@ -1,5 +1,6 @@
 package Controllers;
 
+import BuisnessClasses.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,13 +26,8 @@ public class LoginController {
     @FXML
     private Label messageLabel;
 
-    /**
-     * Méthode appelée automatiquement par JavaFX après le chargement du FXML.
-     * C'est ici qu'on initialise les dépendances.
-     */
     @FXML
     public void initialize() {
-        // On récupère l'instance unique de SessionFacade
         this.sessionFacade = SessionFacade.getInstance();
     }
 
@@ -43,24 +39,34 @@ public class LoginController {
             return;
         }
 
-        String user = usernameField.getText();
-        String pass = passwordField.getText();
+        String userAuth = usernameField.getText();
+        String passAuth = passwordField.getText();
 
-        boolean bool = sessionFacade.login(user, pass);
+        boolean success = sessionFacade.login(userAuth, passAuth);
 
-        if (bool) {
+        if (success) {
             messageLabel.setStyle("-fx-text-fill: green;");
             messageLabel.setText("Connexion réussie !");
 
             try {
+                User currentUser = sessionFacade.getCurrentUser();
+                String fxmlFile;
+                String title;
 
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main/adminStore-view.fxml"));
+                if (currentUser.isAdmin()) {
+                    fxmlFile = "/main/adminStore-view.fxml";
+                    title = "Movie Planet - Administration";
+                } else {
+                    fxmlFile = "/main/userStore-view.fxml";
+                    title = "Movie Planet - Boutique";
+                }
+
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
                 Parent root = fxmlLoader.load();
 
                 Stage stage = (Stage) messageLabel.getScene().getWindow();
-
                 Scene scene = new Scene(root, 800, 600);
-                stage.setTitle("Movie Planet - Boutique");
+                stage.setTitle(title);
                 stage.setScene(scene);
                 stage.centerOnScreen();
                 stage.show();
@@ -68,7 +74,7 @@ public class LoginController {
             } catch (IOException e) {
                 e.printStackTrace();
                 messageLabel.setStyle("-fx-text-fill: red;");
-                messageLabel.setText("Erreur lors du chargement de la boutique.");
+                messageLabel.setText("Erreur lors du chargement de la page.");
             }
 
         } else {
