@@ -10,28 +10,9 @@ public class ArticleDAOPostgres implements ArticleDAO {
     private Connection dbConnection;
 
     public ArticleDAOPostgres() throws SQLException {
-        String url = "jdbc:postgresql://localhost:5432/movieplanet";
-        String user = "movieplanet";
-        String password = "MoviePlanet";
-        this.dbConnection = DriverManager.getConnection(url, user, password);
-
-        initializeDatabase();
+        this.dbConnection = DAOFactory.getConnection();
     }
 
-    private void initializeDatabase() throws SQLException {
-        String createTableQuery = "CREATE TABLE IF NOT EXISTS articles (" +
-                "id SERIAL PRIMARY KEY, " +
-                "nom VARCHAR(255) NOT NULL, " +
-                "prix DOUBLE PRECISION, " +
-                "description TEXT, " +
-                "image_url VARCHAR(255), " +
-                "stock INT, " +
-                "film_lie VARCHAR(255))";
-
-        try (Statement stmt = dbConnection.createStatement()) {
-            stmt.execute(createTableQuery);
-        }
-    }
 
     @Override
     public List<Article> findAll() throws SQLException {

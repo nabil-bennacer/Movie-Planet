@@ -9,11 +9,7 @@ public class CommentaireDAOPostgres implements CommentaireDAO {
     private Connection dbConnection;
 
     public CommentaireDAOPostgres() throws SQLException {
-        // Idéalement, récupérer la connexion via une classe utilitaire commune pour éviter la duplication
-        String url = "jdbc:postgresql://localhost:5432/movieplanet";
-        String user = "movieplanet";
-        String password = "MoviePlanet";
-        this.dbConnection = DriverManager.getConnection(url, user, password);
+        this.dbConnection = DAOFactory.getConnection();
     }
 
     @Override

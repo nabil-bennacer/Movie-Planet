@@ -21,6 +21,9 @@
                     </children>
                     <HBox.margin><Insets right="20.0" /></HBox.margin>
                 </HBox>
+                <Button mnemonicParsing="false" onAction="#openStore" text="🛍 Boutique">
+                    <HBox.margin><Insets right="10.0" /></HBox.margin>
+                </Button>
                 <Button mnemonicParsing="false" onAction="#openNotifications" text="🔔 Notifications">
                     <HBox.margin><Insets right="10.0" /></HBox.margin>
                 </Button>

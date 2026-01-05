@@ -103,6 +103,12 @@
                     </content>
                 </Tab>
 
+                <Tab text="Gestion Boutique">
+                    <content>
+                        <fx:include source="adminStore-view.fxml"/>
+                    </content>
+                </Tab>
+
             </tabs>
 
         </TabPane>

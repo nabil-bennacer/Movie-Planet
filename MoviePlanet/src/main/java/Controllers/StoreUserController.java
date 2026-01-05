@@ -4,6 +4,8 @@ import BuisnessClasses.Article;
 import Facades.StoreFacade;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.event.ActionEvent;
+import javafx.scene.Node;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -177,5 +179,17 @@ public class StoreUserController {
 
     public void updatePanierIcon() {
         panierButton.setText("Panier (+1)");
+    }
+
+    @FXML
+    public void goBack(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/main/movie-view.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

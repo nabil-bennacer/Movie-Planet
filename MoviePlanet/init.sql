@@ -1,32 +1,11 @@
 -- 1. Nettoyage initial
 DROP TABLE IF EXISTS commentaires CASCADE;
 DROP TABLE IF EXISTS articles CASCADE;
-DROP TABLE IF EXISTS users CASCADE;
 
--- 2. Création de la table 'users'
-CREATE TABLE IF NOT EXISTS users (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(255) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    nom VARCHAR(255),
-    email VARCHAR(255),
-    role VARCHAR(20) NOT NULL DEFAULT 'visitor' CHECK (role IN ('admin', 'visitor'))
-);
 
--- Insertion de l'utilisateur Admin
-INSERT INTO users (username, password, nom, email, role)
-VALUES ('admin', '1234', 'Administrateur', 'admin@movieplanet.fr', 'admin');
+-
 
--- Insertion d'un utilisateur Visiteur générique
-INSERT INTO users (username, password, nom, email, role)
-VALUES ('visitor', '1234', 'Visiteur Test', 'visitor@movieplanet.fr', 'visitor');
 
--- Insertion des utilisateurs fictifs pour les commentaires
-INSERT INTO users (username, password, nom, email, role) VALUES
-('yassin', '1234', 'DAANOUN Yassin', 'yassin@test.fr', 'visitor'),
-('justin', '1234', 'CHAPON Justin', 'justin@test.fr', 'visitor'),
-('carolina', '1234', 'BRAVO APAZA Carolina', 'carolina@test.fr', 'visitor'),
-('nabil', '1234', 'BENNACER Nabil', 'nabil@test.fr', 'visitor');
 
 
 -- 3. Création de la table 'articles'

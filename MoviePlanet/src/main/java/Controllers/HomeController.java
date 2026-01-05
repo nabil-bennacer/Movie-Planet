@@ -150,4 +150,20 @@ public class HomeController {
             }
         }
     }
+
+    @FXML
+    public void openStore(ActionEvent event) {
+        try {
+            // Chargement de la vue Boutique Utilisateur
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/userStore-view.fxml"));
+            Parent root = loader.load();
+
+            // Changement de scène
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
