@@ -64,4 +64,14 @@ public class MovieManagement {
             return false;
         }
     }
+
+    public boolean updateMovie(int id, String title, String desc, String genre, int duration, String url) {
+        try {
+            Movie movieToUpdate = new Movie(id, title, desc, genre, duration, url);
+            return movieDAO.updateMovie(movieToUpdate);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

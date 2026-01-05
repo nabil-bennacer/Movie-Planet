@@ -94,6 +94,13 @@ public class SessionFacade {
         return false;
     }
 
+    public boolean updateMovie(int id, String title, String desc, String genre, int duration, String url) {
+        if (currentUser != null && "Admin".equals(currentUser.getRole())) {
+            return movieManager.updateMovie(id, title, desc, genre, duration, url);
+        }
+        return false;
+    }
+
     public List<Notification> getNotifications() {
         return notifManager.getAllNotifications();
     }

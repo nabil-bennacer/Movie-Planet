@@ -11,4 +11,5 @@ public interface MovieDAO {
 
     boolean createMovie(Movie movie) throws SQLException;
     boolean deleteMovie(int id) throws SQLException;
+    boolean updateMovie(Movie movie) throws SQLException;
 }

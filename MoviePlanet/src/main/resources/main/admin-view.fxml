@@ -66,7 +66,13 @@
                                         <TextField fx:id="posterUrlField" promptText="URL de l'affiche (Image)" />
                                         <TextArea fx:id="descriptionArea" prefHeight="100.0" promptText="Synopsis / Description" wrapText="true" />
 
-                                        <Button mnemonicParsing="false" onAction="#handleAddMovie" prefWidth="320.0" style="-fx-background-color: #27ae60; -fx-text-fill: white;" text="Ajouter au catalogue" />
+                                        <HBox spacing="10.0">
+                                            <children>
+                                                <Button mnemonicParsing="false" onAction="#handleAddMovie" prefWidth="100.0" style="-fx-background-color: #27ae60; -fx-text-fill: white;" text="Ajouter" />
+                                                <Button mnemonicParsing="false" onAction="#handleUpdateMovie" prefWidth="100.0" style="-fx-background-color: #f39c12; -fx-text-fill: white;" text="Modifier" />
+                                                <Button mnemonicParsing="false" onAction="#handleClearForm" prefWidth="100.0" style="-fx-background-color: #95a5a6; -fx-text-fill: white;" text="Vider" />
+                                            </children>
+                                        </HBox>
                                         <Label fx:id="movieMessageLabel" alignment="CENTER" prefWidth="320.0" textFill="#e74c3c" />
                                     </children>
                                 </VBox>

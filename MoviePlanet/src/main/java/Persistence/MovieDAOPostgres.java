@@ -82,6 +82,22 @@ public class MovieDAOPostgres implements MovieDAO {
         }
     }
 
+    @Override
+    public boolean updateMovie(Movie movie) throws SQLException {
+        String query = "UPDATE movies SET title = ?, description = ?, genre = ?, duration = ?, poster_url = ? WHERE id = ?";
+
+        try (PreparedStatement stmt = dbConnection.prepareStatement(query)) {
+            stmt.setString(1, movie.getTitle());
+            stmt.setString(2, movie.getDescription());
+            stmt.setString(3, movie.getGenre());
+            stmt.setInt(4, movie.getDuration());
+            stmt.setString(5, movie.getPosterUrl());
+            stmt.setInt(6, movie.getId());
+
+            return stmt.executeUpdate() > 0;
+        }
+    }
+
     private Movie mapResultSetToMovie(ResultSet rs) throws SQLException {
         return new Movie(
                 rs.getInt("id"),

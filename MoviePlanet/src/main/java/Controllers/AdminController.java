@@ -56,7 +56,67 @@ public class AdminController {
         movieGenreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));
         movieDurationColumn.setCellValueFactory(new PropertyValueFactory<>("duration"));
 
+        movieTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                fillForm(newSelection);
+            }
+        });
+
         refreshAll();
+    }
+
+    private void fillForm(Movie movie) {
+        titleField.setText(movie.getTitle());
+        genreField.setText(movie.getGenre());
+        durationField.setText(String.valueOf(movie.getDuration()));
+        posterUrlField.setText(movie.getPosterUrl());
+        descriptionArea.setText(movie.getDescription());
+        movieMessageLabel.setText("Film sélectionné (ID: " + movie.getId() + ")");
+        movieMessageLabel.setStyle("-fx-text-fill: blue;");
+    }
+
+    @FXML
+    public void handleClearForm() {
+        titleField.clear();
+        genreField.clear();
+        durationField.clear();
+        posterUrlField.clear();
+        descriptionArea.clear();
+        movieTable.getSelectionModel().clearSelection();
+        movieMessageLabel.setText("Formulaire vidé. Prêt pour l'ajout.");
+        movieMessageLabel.setStyle("-fx-text-fill: black;");
+    }
+
+    @FXML
+    public void handleUpdateMovie() {
+        Movie selected = movieTable.getSelectionModel().getSelectedItem();
+        if (selected == null) {
+            movieMessageLabel.setText("Veuillez sélectionner un film dans la liste.");
+            movieMessageLabel.setStyle("-fx-text-fill: red;");
+            return;
+        }
+
+        try {
+            String title = titleField.getText();
+            String genre = genreField.getText();
+            String desc = descriptionArea.getText();
+            String url = posterUrlField.getText();
+            int duration = Integer.parseInt(durationField.getText());
+
+
+            boolean success = SessionFacade.getInstance().updateMovie(selected.getId(), title, desc, genre, duration, url);
+
+            if (success) {
+                movieMessageLabel.setText("Film modifié avec succès !");
+                movieMessageLabel.setStyle("-fx-text-fill: green;");
+                handleClearForm();
+                loadMovies();
+            } else {
+                movieMessageLabel.setText("Erreur lors de la modification.");
+            }
+        } catch (NumberFormatException e) {
+            movieMessageLabel.setText("La durée doit être un nombre.");
+        }
     }
 
     private void refreshAll() {
@@ -107,6 +167,7 @@ public class AdminController {
                 movieMessageLabel.setStyle("-fx-text-fill: green;");
                 clearMovieForm();
                 loadMovies();
+                handleClearForm();
             } else {
                 movieMessageLabel.setText("Erreur lors de l'ajout.");
             }
