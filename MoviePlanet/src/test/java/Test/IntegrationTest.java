@@ -1,7 +1,10 @@
 package IntegrationTest;
 
+import BuisnessClasses.Article;
+import BuisnessClasses.Commentaire;
 import BuisnessClasses.Movie;
 import BuisnessClasses.User;
+import Facades.StoreFacade;
 import Services.MovieManagement;
 import Services.NotificationManagement;
 import Services.UserManagement;
@@ -49,5 +52,30 @@ public class IntegrationTest {
         Assertions.assertFalse(results.isEmpty());
 
         System.out.println("Film trouvé : " + results.get(0).getTitle());
+    }
+
+    @Test
+    public void testFanStoreAndCommentsSimple() {
+        System.out.println("Test : Fan Store & Comments");
+        StoreFacade store = new StoreFacade();
+
+        // 1. Création rapide d'un article
+        String articleName = "Test" + System.currentTimeMillis();
+        store.ajouterArticle(new Article(0, articleName, 15.0, "Desc", "img.png", 10, "Film"));
+
+        // 2. Récupération de l'ID (Fan Store)
+        Article article = store.searchArticles(articleName).get(0);
+        int id = article.getId();
+        Assertions.assertNotNull(article);
+
+        // 3. Ajout et Vérification du Commentaire (Comment Use Case)
+        store.ajouterCommentaire(new Commentaire(1, id, "Top !", 5));
+
+        List<Commentaire> comments = store.getCommentaires(id);
+        Assertions.assertFalse(comments.isEmpty(), "Le commentaire devrait être présent");
+        Assertions.assertEquals("Top !", comments.get(0).getTexte());
+
+        // Nettoyage
+        store.supprimerArticle(id);
     }
 }
