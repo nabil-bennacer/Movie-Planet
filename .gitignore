@@ -1,0 +1,35 @@
+# ----------------------
+# FICHIERS DE BUILD MAVEN (Commun à tous)
+# ----------------------
+target/
+dependency-reduced-pom.xml
+
+# ----------------------
+# ECLIPSE (Spécifique)
+# ----------------------
+.classpath
+.project
+.settings/
+.checkstyle
+.factorypath
+bin/
+
+# ----------------------
+# INTELLIJ IDEA (Spécifique)
+# ----------------------
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# ----------------------
+# VS CODE (Spécifique)
+# ----------------------
+.vscode/
+
+# ----------------------
+# SYSTÈME (Mac / Windows)
+# ----------------------
+.DS_Store
+Thumbs.db
